@@ -5,13 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patrimonio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Controle de patrimônio" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Button Content="Novo equipamento" Width="130" Height="30" Margin="99,245,571,159"/>
+        <Button Name="btnEquipamentos" Grid.Row="0" Content="Equipamentos" Click="btnEquipamentos_Click" Width="130" Height="30" />
+        <StackPanel Grid.Row="1" Margin="5">
+            <DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Width="*"/>
+                    <DataGridTextColumn Header="Nome" Width="*"/>
+                    <DataGridTextColumn Header="Serial" Width="*"/>
+                </DataGrid.Columns>
+            
+            </DataGrid>
+            
+        </StackPanel>
     </Grid>
 </Window>

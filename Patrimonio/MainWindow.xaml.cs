@@ -1,4 +1,5 @@
 ﻿using Patrimonio.Entity;
+using Patrimonio.UI;
 using System;
 using System.Windows;
 
@@ -10,13 +11,13 @@ namespace Patrimonio
         {
             InitializeComponent();
 
-            var equipamento = new Equipamento() 
-            { 
-                Nome = "Computador",
-                DataAquisicao = DateTime.Now,
-            };
+            
+        }
 
-            dbContext.insert(equipamento);
+        private void btnEquipamentos_Click(object sender, RoutedEventArgs e)
+        {
+            EquipamentoUIView equipamentos = new EquipamentoUIView();
+            equipamentos.Show();
         }
     }
 }

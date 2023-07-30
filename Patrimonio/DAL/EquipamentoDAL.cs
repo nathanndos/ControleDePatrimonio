@@ -17,7 +17,7 @@ namespace Patrimonio.DAL
         {
             var obj = get(equipamento.Id);
 
-            if (obj == null)
+            if (obj?.Ide.isEmpty() ?? true)
                 insert(equipamento);
             else
                 update(equipamento);

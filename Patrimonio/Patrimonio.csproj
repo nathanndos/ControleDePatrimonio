@@ -16,9 +16,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ConstantManager\" />
-    <Folder Include="UI\" />
-  </ItemGroup>
-
 </Project>

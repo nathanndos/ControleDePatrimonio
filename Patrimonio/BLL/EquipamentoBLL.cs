@@ -1,5 +1,6 @@
 ﻿using Patrimonio.DAL;
 using Patrimonio.Entity;
+using System.Collections.Generic;
 
 namespace Patrimonio.BLL
 {
@@ -12,7 +13,12 @@ namespace Patrimonio.BLL
         public static void save(Equipamento equipamento)
         {
             isValid(equipamento);
-            dbContext.insert(equipamento);
+            EquipamentoDAL.save(equipamento);
+        }
+
+        public static List<Equipamento> getAll()
+        {
+            return EquipamentoDAL.getAll();
         }
 
         public static Equipamento get(int id)
