@@ -9,9 +9,9 @@ namespace Patrimonio.DAL
 {
     public class EquipamentoDAL
     {
-        public static Equipamento get(int id) => dbContext.get<Equipamento>(id);
+        public static Equipamento get(int id) => dbContext.Instance.get<Equipamento>(id);
 
-        public static List<Equipamento> getAll() => dbContext.getAll<Equipamento>();
+        public static List<Equipamento> getAll() => dbContext.Instance.getAll<Equipamento>();
 
         public static void save(Equipamento equipamento)
         {
@@ -23,16 +23,16 @@ namespace Patrimonio.DAL
                 update(equipamento);
         }
 
-        public static void delete(Equipamento equipamento) => dbContext.delete(equipamento);
+        public static void delete(Equipamento equipamento) => dbContext.Instance.delete(equipamento);
 
-        private static void update(Equipamento equipamento) => dbContext.update(equipamento);
+        private static void update(Equipamento equipamento) => dbContext.Instance.update(equipamento);
 
         private static void insert(Equipamento equipamento)
         {
             if (equipamento.Ide.isEmpty())
                 equipamento.Ide = Guid.NewGuid();
 
-            dbContext.insert(equipamento);
+            dbContext.Instance.insert(equipamento);
         }
     }
 }
