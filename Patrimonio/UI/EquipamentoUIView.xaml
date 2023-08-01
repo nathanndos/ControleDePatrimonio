@@ -22,8 +22,8 @@
             <WrapPanel Grid.Row="0">
                 <Button Name="btnNovo" Content="Novo" Width="60" Click="btnNovo_Click"/>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                    <Button Content="Editar" Width="60" Height="22" VerticalAlignment="Stretch" />
-                    <Button Content="Excluir" Width="60" Height="22" VerticalAlignment="Bottom"/>
+                    <Button Name="btnEditar" Content="Editar" Click="btnEditar_Click" Width="60" Height="22" VerticalAlignment="Stretch" />
+                    <Button Name="btnExcluir" Content="Excluir" Click="btnExcluir_Click" Width="60" Height="22" VerticalAlignment="Bottom"/>
                 </StackPanel>
             </WrapPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" >

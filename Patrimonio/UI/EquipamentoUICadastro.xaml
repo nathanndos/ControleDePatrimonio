@@ -14,15 +14,14 @@
     </Window.Resources>
     <Grid Margin="10 10 10 3">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Top">
-            <Button x:Name="btnSalvar" Content="Salvar" Width="50" HorizontalAlignment="Left" Click="btnSalvar_Click"/>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="5 0 0 0">
+            <Button x:Name="btnSalvar" Content="Salvar" Width="50" Height="40" HorizontalAlignment="Left" Click="btnSalvar_Click"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="5 0 0 0">
                 <Button x:Name="btnNovo" Click="btnNovo_Click" Content="Novo" Height="22" Width="50" HorizontalAlignment="Left" Margin="0 0 0 6"/>
-                <Button x:Name="btnLimpar" Content="Limpar" Height="22" Width="50" HorizontalAlignment="Left"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1">
@@ -41,6 +40,6 @@
                 <TextBox x:Name="txtDataAquisicao" />
             </DockPanel>
         </StackPanel>
-        <Label Grid.Row="2" Content="bstatus" Name="bStatus" />
+        <Label Grid.Row="2" Name="bStatus" />
     </Grid>
 </Window>

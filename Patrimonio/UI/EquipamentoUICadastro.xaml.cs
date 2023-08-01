@@ -9,15 +9,19 @@ namespace Patrimonio.UI
 {
     public partial class EquipamentoUICadastro : Window
     {
+        Equipamento equipamento;
+
         public EquipamentoUICadastro()
         {
             InitializeComponent();
+            equipamento = new Equipamento();
         }
 
-        public EquipamentoUICadastro(Equipamento equipamento)
+        public EquipamentoUICadastro(Equipamento obj)
         {
             InitializeComponent();
-            fillForm(equipamento);
+            equipamento = obj;
+            fillForm(obj);
         }
 
         private void fillForm(Equipamento equipamento)
@@ -32,8 +36,7 @@ namespace Patrimonio.UI
         {
             try
             {
-                Equipamento equipamento = new Equipamento();
-
+                equipamento.Id = equipamento.Id;
                 equipamento.Nome = txtNomeEquipamento.Text;
                 equipamento.Serial = txtSerial.Text;
                 equipamento.DataAquisicao = DateTime.Now;
@@ -47,7 +50,7 @@ namespace Patrimonio.UI
             }
         }
 
-        private void callNew()
+        private void clearForm()
         {
             try
             {
@@ -55,16 +58,16 @@ namespace Patrimonio.UI
                 txtSerial.Text = string.Empty;
                 txtId.Text = string.Empty;
                 txtDataAquisicao.Text = string.Empty;
+                bStatus.Content = string.Empty;
             }
             catch (Exception ex)
             {
-
                 bStatus.setExceptionMessage(ex);
             }
         }
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e) => save();
 
-        private void btnNovo_Click(object sender, RoutedEventArgs e) => callNew();
+        private void btnNovo_Click(object sender, RoutedEventArgs e) => clearForm();
     }
 }

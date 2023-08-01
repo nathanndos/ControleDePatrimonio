@@ -1,38 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore.Update.Internal;
-using Patrimonio.Entity;
+﻿using Patrimonio.Entity;
 using Patrimonio.Util;
 using System;
-using System.Collections.Generic;
-using System.Windows.Documents;
 
 namespace Patrimonio.DAL
 {
-    public class EquipamentoDAL
+    public class EquipamentoDAL : DbRepository<Equipamento>
     {
-        public static Equipamento get(int id) => dbContext.Instance.get<Equipamento>(id);
-
-        public static List<Equipamento> getAll() => dbContext.Instance.getAll<Equipamento>();
-
         public static void save(Equipamento equipamento)
         {
             var obj = get(equipamento.Id);
 
             if (obj?.Ide.isEmpty() ?? true)
+            {
+                if (equipamento.Ide.isEmpty())
+                    equipamento.Ide = Guid.NewGuid();
+
                 insert(equipamento);
+            }
             else
                 update(equipamento);
         }
 
-        public static void delete(Equipamento equipamento) => dbContext.Instance.delete(equipamento);
-
-        private static void update(Equipamento equipamento) => dbContext.Instance.update(equipamento);
-
-        private static void insert(Equipamento equipamento)
+        public static void del(Equipamento equipamento, bool onlyChangeStatus = true)
         {
-            if (equipamento.Ide.isEmpty())
-                equipamento.Ide = Guid.NewGuid();
+            var obj = get(equipamento.Id);
 
-            dbContext.Instance.insert(equipamento);
+            if (obj is null)
+                return;
+
+            if (onlyChangeStatus)
+            {
+                obj.Status = - 1;
+                update(obj);
+            }
+            else
+                delete(obj);
         }
     }
 }
