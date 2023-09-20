@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Patrimonio.Entity
 {
@@ -8,6 +9,8 @@ namespace Patrimonio.Entity
         public Guid Ide { get; set; }
         public string Nome { get; set; }
         public DateTime DataAquisicao { get; set; }
+
+        [Column(TypeName = "varchar(10)")]
         public string Serial { get; set; }
         public int Status { get; set; } = 0;
 

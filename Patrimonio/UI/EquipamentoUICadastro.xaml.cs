@@ -1,4 +1,4 @@
-﻿using Patrimonio.BLL;
+﻿using BLL;
 using Patrimonio.ConstantManager;
 using Patrimonio.Entity;
 using Patrimonio.Util;

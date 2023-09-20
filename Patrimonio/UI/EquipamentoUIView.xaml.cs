@@ -1,8 +1,9 @@
-﻿using Patrimonio.BLL;
+﻿using BLL;
 using Patrimonio.Entity;
 using Patrimonio.Util;
 using System;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Patrimonio.UI
 {
@@ -12,6 +13,17 @@ namespace Patrimonio.UI
         {
             InitializeComponent();
             refreshDataDrid();
+
+            txtBuscar.LostFocus += delegate(object sender, RoutedEventArgs e)
+            {
+                txtBuscar.Text = "Buscar por id, serial ou nome";
+                txtBuscar.Foreground = Brushes.Gray;
+            };
+
+            txtBuscar.GotFocus += delegate (object sender, RoutedEventArgs e)
+            {
+                txtBuscar.Text = string.Empty;
+            };
         }
 
         private void callNovo()
@@ -57,16 +69,23 @@ namespace Patrimonio.UI
             }
         }
 
-        private void dataGridEquipamentos_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void refreshDataDrid()
         {
+            dataGridEquipamentos.ItemsSource = EquipamentoBLL.getAll();
+            txtBuscar.Focus();
         }
-
-        private void refreshDataDrid() => dataGridEquipamentos.ItemsSource = EquipamentoBLL.getAll();
 
         private void btnNovo_Click(object sender, RoutedEventArgs e) => callNovo();
 
         private void btnEditar_Click(object sender, RoutedEventArgs e) => callEditar();
 
         private void btnExcluir_Click(object sender, RoutedEventArgs e) => callDelete();
+
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) => callEditar();
     }
 }

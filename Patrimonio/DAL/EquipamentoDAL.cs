@@ -2,7 +2,7 @@
 using Patrimonio.Util;
 using System;
 
-namespace Patrimonio.DAL
+namespace DAL
 {
     public class EquipamentoDAL : DbRepository<Equipamento>
     {

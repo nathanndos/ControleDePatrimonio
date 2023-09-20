@@ -1,16 +1,19 @@
-﻿using Patrimonio.DAL;
+﻿using DAL;
+using ConstantManager.Exception;
 using Patrimonio.Entity;
+using Patrimonio.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Patrimonio.BLL
+namespace BLL
 {
     public class EquipamentoBLL
     {
         public static void isValid(Equipamento equipamento)
         {
-
+            if (equipamento.Nome.isEmpty())
+                throw new Exception(EquipamentoExceptionConstant.NomeInvalido);
         }
         public static void save(Equipamento equipamento)
         {

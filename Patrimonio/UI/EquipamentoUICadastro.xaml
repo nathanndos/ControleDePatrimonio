@@ -29,7 +29,7 @@
                 <Label Content="Nome: "/>
                 <TextBox x:Name="txtNomeEquipamento" Width="250" VerticalAlignment="Stretch"/>
                 <Label Content="Id: "/>
-                <TextBox Name="txtId" Width="50"/>
+                <TextBox Name="txtId" Width="auto" IsEnabled="False"/>
             </DockPanel>
             <DockPanel>
                 <Label Content="Serial: "/>
