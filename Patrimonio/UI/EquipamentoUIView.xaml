@@ -19,29 +19,40 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <Grid HorizontalAlignment="Stretch" Name="gridAtual" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-            <WrapPanel Grid.Row="0">
-                <Button Name="btnNovo" Content="Novo" Width="60" Click="btnNovo_Click"/>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                    <Button Name="btnEditar" Content="Editar" Click="btnEditar_Click" Width="60" Height="22" VerticalAlignment="Stretch" />
-                    <Button Name="btnExcluir" Content="Excluir" Click="btnExcluir_Click" Width="60" Height="22" VerticalAlignment="Bottom"/>
-                </StackPanel>
-            </WrapPanel>
-                <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" >
-                    <TextBox Name="txtBuscar" Width="340"/>
-                    <Label Content="Data aquisição inicial:" />
-                    <TextBox Name="txtDataAquisicaoInicial" Width="100" Height="22" VerticalContentAlignment="Center"/>
-                    <Label Content="final:" />
-                    <TextBox Name="txtDataAquisicaoFinal" Width="100"  Height="22" VerticalContentAlignment="Center"/>
-                    <Button Margin="10 0 0 0" Name="btnBuscar" Click="btnBuscar_Click" Content="Buscar" Width="50" Height="22"/>
-                </StackPanel>
+                <WrapPanel Grid.Row="0">
+                    <Button Name="btnNovo" Content="Novo" Width="60" Click="btnNovo_Click"/>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                        <Button Name="btnEditar" Content="Editar" Click="btnEditar_Click" Width="60" Height="22" VerticalAlignment="Stretch" />
+                        <Button Name="btnExcluir" Content="Excluir" Click="btnExcluir_Click" Width="60" Height="22" VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                </WrapPanel>
+                <DockPanel Grid.Row="1">
+                    <!--<Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>-->
+                        <TextBox Name="txtBuscar" Width="250" KeyUp="txtBuscar_KeyUp" />
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <Label Content="Data aquisição inicial:" />
+                            <DatePicker SelectedDateFormat="Short"  Width="150" Height="25" />
+                            <Label Content="final:" />
+                            <DatePicker SelectedDateFormat="Short"  Width="150" Height="25" />
+                            <Button Margin="10 0 0 0" Name="btnBuscar" Click="btnBuscar_Click" Content="Buscar" Width="50" Height="22"/>
+                        </StackPanel>
+                    <!--</Grid>-->
+                </DockPanel>
             </Grid>
-        </StackPanel>
+        </DockPanel>
         <DataGrid Name="dataGridEquipamentos" Grid.Row="1" ItemsSource="{Binding}" Margin="0 10 0 0" CanUserResizeColumns="False" 
                   AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Resources>
