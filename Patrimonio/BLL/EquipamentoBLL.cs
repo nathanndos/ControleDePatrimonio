@@ -5,7 +5,6 @@ using Patrimonio.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace BLL
 {
@@ -41,7 +40,7 @@ namespace BLL
         {
             var result = from equipamento in dbContext.get.Equipamento
 
-                         where (equipamento.Serial.Contains(textSearch) || 
+                         where (equipamento.Serial.Contains(textSearch) ||
                                equipamento.Nome.Contains(textSearch) ||
                                equipamento.Id.ToString().Contains(textSearch)) &&
                                equipamento.Status.Equals(0)

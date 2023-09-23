@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patrimonio.UI"
         mc:Ignorable="d" Margin="0" Padding="0"
-        Title="Cadastro de equipamentos" Height="230" Width="420" WindowStartupLocation="CenterScreen">
+        Title="Cadastro de equipamentos" Height="300" Width="350" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="22"/>
@@ -14,27 +14,33 @@
     </Window.Resources>
     <Grid Margin="10 10 10 3">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Top">
-            <Button x:Name="btnSalvar" Content="Salvar" Width="50" Height="40" HorizontalAlignment="Left" Click="btnSalvar_Click"/>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="5 0 0 0">
-                <Button x:Name="btnNovo" Click="btnNovo_Click" Content="Novo" Height="22" Width="50" HorizontalAlignment="Left" Margin="0 0 0 6"/>
-            </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0 0 0 6" Height="35">
+            <Button x:Name="btnSalvar" Content="Salvar" Width="50"  HorizontalAlignment="Left" Click="btnSalvar_Click"/>
+            <Button x:Name="btnNovo" Click="btnNovo_Click" Content="Novo" Width="50" HorizontalAlignment="Left"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1">
-            <DockPanel >
-                <Label Content="Nome: "/>
-                <TextBox x:Name="txtNomeEquipamento" Width="250" VerticalAlignment="Stretch"/>
-                <Label Content="Id: "/>
-                <TextBox Name="txtId" Width="auto" IsEnabled="False"/>
-            </DockPanel>
             <DockPanel>
-                <Label Content="Serial: "/>
-                <TextBox x:Name="txtSerial" />
+                <Label Content="Nome: "/>
+                <TextBox x:Name="txtNomeEquipamento"/>
             </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel>
+                    <Label Content="Serial:"/>
+                    <TextBox x:Name="txtSerial"/>
+                </DockPanel>
+                <DockPanel Grid.Column="1">
+                    <Label Content="Id: "/>
+                    <TextBox Name="txtId" IsEnabled="False"/>
+                </DockPanel>
+            </Grid>
             <DockPanel>
                 <Label Content="Data aquisicao: "/>
                 <TextBox x:Name="txtDataAquisicao" />

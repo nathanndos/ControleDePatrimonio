@@ -8,6 +8,7 @@ namespace Patrimonio.Entity
         public int Id { get; set; }
         public Guid Ide { get; set; }
         public string Nome { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime DataAquisicao { get; set; }
 
         [Column(TypeName = "varchar(10)")]

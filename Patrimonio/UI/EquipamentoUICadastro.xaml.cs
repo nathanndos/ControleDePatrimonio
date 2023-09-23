@@ -36,6 +36,8 @@ namespace Patrimonio.UI
         {
             try
             {
+                bStatus.resetContent();
+
                 equipamento.Id = equipamento.Id;
                 equipamento.Nome = txtNomeEquipamento.Text;
                 equipamento.Serial = txtSerial.Text;
@@ -58,7 +60,7 @@ namespace Patrimonio.UI
                 txtSerial.Text = string.Empty;
                 txtId.Text = string.Empty;
                 txtDataAquisicao.Text = string.Empty;
-                bStatus.Content = string.Empty;
+                bStatus.resetContent();
             }
             catch (Exception ex)
             {

@@ -3,26 +3,51 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Patrimonio"
         mc:Ignorable="d"
-        Title="Controle de patrimônio" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="Controle de patrimônio" Height="720" Width="1024" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Button Name="btnEquipamentos" Grid.Row="0" Content="Equipamentos" Click="btnEquipamentos_Click" Width="130" Height="30" />
+        <DockPanel Height="70">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <DockPanel HorizontalAlignment="Left">
+                    <Button Name="btnNovoEmprestimo" Content="Emprestimos" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
+                    <Button Name="btnEquipamentos" Content="Equipamentos" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
+                    <Button Name="btnPessoas" Content="Pessoas" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
+                    <Button Name="btnHistorico" Content="Histórico" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
+                    <Button Name="btnListaDeDejos" Content="Lista de desejos" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
         <StackPanel Grid.Row="1" Margin="5">
-            <DataGrid>
+            <DataGrid Margin="0 0 0 0" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Width="*"/>
                     <DataGridTextColumn Header="Nome" Width="*"/>
                     <DataGridTextColumn Header="Serial" Width="*"/>
                 </DataGrid.Columns>
-            
             </DataGrid>
-            
         </StackPanel>
     </Grid>
 </Window>

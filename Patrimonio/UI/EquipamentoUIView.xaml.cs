@@ -72,7 +72,7 @@ public partial class EquipamentoUIView : Window
         try
         {
             dataGridEquipamentos.ItemsSource = EquipamentoBLL.getBySearch(txtBuscar.getString());
-            bStatus.resetContet();
+            bStatus.resetContent();
         }
         catch (Exception ex)
         {
