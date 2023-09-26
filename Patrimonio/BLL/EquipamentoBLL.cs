@@ -1,10 +1,11 @@
 ﻿using ConstantManager.Exception;
 using DAL;
-using Patrimonio.Entity;
+using Entity;
 using Patrimonio.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace BLL
 {
@@ -38,16 +39,22 @@ namespace BLL
 
         public static List<Equipamento> getBySearch(string textSearch)
         {
+            Expression<Func<Equipamento, bool>>? expressionWhere = null;
+
+            if (textSearch.isNotEmpty())
+            {
+                expressionWhere = equipamento =>
+                                  equipamento.Serial.Contains(textSearch) ||
+                                  equipamento.Nome.Contains(textSearch) ||
+                                  equipamento.Id.ToString().Contains(textSearch) &&
+                                  equipamento.Status.Equals(0);
+            }
+
             var result = from equipamento in dbContext.get.Equipamento
-
-                         where (equipamento.Serial.Contains(textSearch) ||
-                               equipamento.Nome.Contains(textSearch) ||
-                               equipamento.Id.ToString().Contains(textSearch)) &&
-                               equipamento.Status.Equals(0)
-
+                         orderby equipamento.Nome
                          select equipamento;
 
-            return result.ToList();
+            return expressionWhere is null ? result.ToList() : result.Where(expressionWhere).ToList();
         }
     }
 }

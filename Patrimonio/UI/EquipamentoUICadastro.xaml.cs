@@ -1,9 +1,11 @@
 ﻿using BLL;
+using Entity;
 using Patrimonio.ConstantManager;
 using Patrimonio.Entity;
 using Patrimonio.Util;
 using System;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Patrimonio.UI
 {
@@ -41,7 +43,7 @@ namespace Patrimonio.UI
                 equipamento.Id = equipamento.Id;
                 equipamento.Nome = txtNomeEquipamento.Text;
                 equipamento.Serial = txtSerial.Text;
-                equipamento.DataAquisicao = DateTime.Now;
+                equipamento.DataAquisicao = txtDataAquisicao.getDateTimeFormat();
 
                 EquipamentoBLL.save(equipamento);
                 bStatus.Content = CommonMessageConstant.SalvoComSucesso;
@@ -71,5 +73,10 @@ namespace Patrimonio.UI
         private void btnSalvar_Click(object sender, RoutedEventArgs e) => save();
 
         private void btnNovo_Click(object sender, RoutedEventArgs e) => clearForm();
+
+        private void txtDataAquisicao_KeyDown(object sender, KeyEventArgs e)
+        {
+            var teste = e.SystemKey.ToString();
+        }
     }
 }

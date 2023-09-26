@@ -1,4 +1,4 @@
-﻿using Patrimonio.Entity;
+﻿using Entity;
 using Patrimonio.Util;
 using System;
 
@@ -21,16 +21,16 @@ namespace DAL
                 update(equipamento);
         }
 
-        public static void del(Equipamento equipamento, bool onlyChangeStatus = true)
+        public static void del(Equipamento equipamento, bool onlyAtivo = true)
         {
             var obj = get(equipamento.Id);
 
             if (obj is null)
                 return;
 
-            if (onlyChangeStatus)
+            if (onlyAtivo)
             {
-                obj.Status = - 1;
+                obj.Status = -1;
                 update(obj);
             }
             else

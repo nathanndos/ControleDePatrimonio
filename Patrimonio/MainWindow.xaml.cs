@@ -1,7 +1,6 @@
-﻿using Patrimonio.Entity;
-using Patrimonio.UI;
-using System;
+﻿using Patrimonio.UI;
 using System.Windows;
+using UI.PessoaUI;
 
 namespace Patrimonio
 {
@@ -11,7 +10,7 @@ namespace Patrimonio
         {
             InitializeComponent();
 
-            
+
         }
 
         private void btnEquipamentos_Click(object sender, RoutedEventArgs e)
@@ -23,6 +22,12 @@ namespace Patrimonio
         private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
+        }
+
+        private void btnPessoas_Click(object sender, RoutedEventArgs e)
+        {
+            PessoaView pessoaView = new PessoaView();
+            pessoaView.Show();
         }
     }
 }

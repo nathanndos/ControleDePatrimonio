@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Patrimonio.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Patrimonio.Entity
+namespace Entity
 {
     public class DbRepository<T> where T : class, new()
     {

@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Entity;
 using Patrimonio.Entity;
 using Patrimonio.Util;
 using System;
@@ -63,7 +64,7 @@ public partial class EquipamentoUIView : Window
 
     private void refreshDataDrid()
     {
-        dataGridEquipamentos.ItemsSource = EquipamentoBLL.getAll();
+        dataGridEquipamentos.ItemsSource = EquipamentoBLL.getBySearch(txtBuscar.getString());
         txtBuscar.Focus();
     }
 

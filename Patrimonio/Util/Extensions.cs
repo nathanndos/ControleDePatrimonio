@@ -11,7 +11,6 @@ namespace Patrimonio.Util
         public static bool isApagado(this int value) => value.Equals(-1);
         public static bool isNotApagado(this int value) => !value.isApagado();
         public static string getString(this TextBox value) => value.Text?.Trim() ?? string.Empty;
-        public static void setExceptionMessage(this Label value, Exception ex) => value.Content = ex.Message;
-        public static void resetContent(this Label value) => value.Content = string.Empty;
+        public static bool isZero(this int value) => value.Equals(0);
     }
 }

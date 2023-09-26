@@ -6,15 +6,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Patrimonio.Entity;
 
 #nullable disable
 
 namespace Patrimonio.Migrations
 {
     [DbContext(typeof(dbContext))]
-    [Migration("20230731233424_Adicionado_status")]
-    partial class Adicionado_status
+    [Migration("20230926013631_InserindoPessoa")]
+    partial class InserindoPessoa
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +34,35 @@ namespace Patrimonio.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DataAquisicao")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
+
+                    b.Property<Guid>("Ide")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("Serial")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Equipamento");
+                });
+
+            modelBuilder.Entity("Entity.Pessoa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("Ide")
                         .HasColumnType("uniqueidentifier");
@@ -44,16 +71,12 @@ namespace Patrimonio.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Serial")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Equipamento");
+                    b.ToTable("Pessoa");
                 });
 #pragma warning restore 612, 618
         }

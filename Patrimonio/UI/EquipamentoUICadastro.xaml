@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patrimonio.UI"
         mc:Ignorable="d" Margin="0" Padding="0"
-        Title="Cadastro de equipamentos" Height="300" Width="350" WindowStartupLocation="CenterScreen">
+        Title="Cadastro de equipamentos" Height="200" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="22"/>
@@ -38,12 +38,12 @@
                 </DockPanel>
                 <DockPanel Grid.Column="1">
                     <Label Content="Id: "/>
-                    <TextBox Name="txtId" IsEnabled="False"/>
+                    <TextBox Name="txtId" IsEnabled="False" />
                 </DockPanel>
             </Grid>
             <DockPanel>
                 <Label Content="Data aquisicao: "/>
-                <TextBox x:Name="txtDataAquisicao" />
+                <DatePicker SelectedDateFormat="Short" Name="txtDataAquisicao" VerticalContentAlignment="Center" KeyDown="txtDataAquisicao_KeyDown" AutomationProperties.AccessKey="123456789"/>
             </DockPanel>
         </StackPanel>
         <Label Grid.Row="2" Name="bStatus" />

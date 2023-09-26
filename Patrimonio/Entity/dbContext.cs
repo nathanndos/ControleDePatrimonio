@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Patrimonio.Entity
+namespace Entity
 {
     public class dbContext : DbContext
     {
@@ -25,5 +25,6 @@ namespace Patrimonio.Entity
         }
 
         public DbSet<Equipamento> Equipamento { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
     }
 }

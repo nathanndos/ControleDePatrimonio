@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Patrimonio.Entity
+namespace Entity
 {
     public class Equipamento
     {

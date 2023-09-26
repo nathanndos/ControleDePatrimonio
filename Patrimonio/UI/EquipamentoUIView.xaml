@@ -36,7 +36,7 @@
                     </StackPanel>
                 </WrapPanel>
                 <DockPanel Grid.Row="1">
-                    <TextBox Name="txtBuscar" Width="280" KeyUp="txtBuscar_KeyUp" />
+                    <TextBox Name="txtBuscar" Width="280" KeyUp="txtBuscar_KeyUp"/>
                     <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center">
                         <Label Content="Data aquisição inicial:" />
                         <DatePicker SelectedDateFormat="Short"  Width="140" Height="25" />
@@ -59,7 +59,13 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="auto" MinWidth="30" />
                 <DataGridTextColumn Header="Serial" Binding="{Binding Serial}" Width="auto" MinWidth="100"/>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*" MinWidth="200"/>
-                <DataGridTextColumn Header="Data Aquisição" Binding="{Binding DataAquisicao}" Width="auto" MinWidth="100"/>
+                <DataGridTextColumn Header="Data Aquisição" Binding="{Binding DataAquisicao, StringFormat=\{0:dd/MM/yyyy\}}" Width="90">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Label Name="bStatus" Content="" Grid.Row="2" HorizontalAlignment="Left"/>
