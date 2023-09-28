@@ -7,7 +7,7 @@ namespace DAL;
 
 public class PessoaDAL : DbRepository<Pessoa>
 {
-    public static void save(Pessoa pessoa)
+    public void save(Pessoa pessoa)
     {
         var obj = get(pessoa.Id);
 
@@ -22,7 +22,7 @@ public class PessoaDAL : DbRepository<Pessoa>
             update(pessoa);
     }
 
-    public static void del(Pessoa pessoa, bool onlyAtivo = true)
+    public void del(Pessoa pessoa, bool onlyAtivo = true)
     {
         var obj = get(pessoa.Id);
 

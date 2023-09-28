@@ -5,7 +5,6 @@ using Patrimonio.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace BLL
 {
@@ -19,42 +18,47 @@ namespace BLL
         public static void save(Equipamento equipamento)
         {
             isValid(equipamento);
-            EquipamentoDAL.save(equipamento);
+            EquipamentoDAL db = new EquipamentoDAL();
+
+            db.save(equipamento);
         }
 
         public static List<Equipamento> getAll()
         {
-            return EquipamentoDAL.getAll().Where(i => i.Status.Equals(0)).ToList();
+            EquipamentoDAL db = new EquipamentoDAL();
+            return db.getAll().Where(i => i.Status.Equals(0)).ToList();
         }
 
         public static Equipamento get(int id)
         {
-            return EquipamentoDAL.get(id);
+            EquipamentoDAL db = new EquipamentoDAL();
+            return db.get(id);
         }
 
         public static void delete(Equipamento equipamento)
         {
-            EquipamentoDAL.del(equipamento);
+            EquipamentoDAL db = new EquipamentoDAL();
+            db.del(equipamento);
         }
 
         public static List<Equipamento> getBySearch(string textSearch)
         {
-            Expression<Func<Equipamento, bool>>? expressionWhere = null;
+            EquipamentoDAL db = new EquipamentoDAL();
+
+            db.select = equipamento => equipamento;
+
+            db.where = equipamento =>
+                       equipamento.Serial.Contains(textSearch) ||
+                       equipamento.Nome.Contains(textSearch) ||
+                       equipamento.Id.ToString().Contains(textSearch) &&
+                       equipamento.Status.Equals(0);
+
+            db.orderBy = equipamento => equipamento.Nome;
 
             if (textSearch.isNotEmpty())
-            {
-                expressionWhere = equipamento =>
-                                  equipamento.Serial.Contains(textSearch) ||
-                                  equipamento.Nome.Contains(textSearch) ||
-                                  equipamento.Id.ToString().Contains(textSearch) &&
-                                  equipamento.Status.Equals(0);
-            }
+                db.where = db.where.and(equipamento => equipamento.Nome.Contains(textSearch));
 
-            var result = from equipamento in dbContext.get.Equipamento
-                         orderby equipamento.Nome
-                         select equipamento;
-
-            return expressionWhere is null ? result.ToList() : result.Where(expressionWhere).ToList();
+            return db.list();
         }
     }
 }

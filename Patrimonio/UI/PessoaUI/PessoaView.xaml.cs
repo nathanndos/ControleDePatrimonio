@@ -96,5 +96,4 @@ public partial class PessoaView : Window
         if (e.Key.Equals(Key.Enter))
             callSearch();
     }
-
 }

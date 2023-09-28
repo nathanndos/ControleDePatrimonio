@@ -6,7 +6,7 @@ namespace DAL
 {
     public class EquipamentoDAL : DbRepository<Equipamento>
     {
-        public static void save(Equipamento equipamento)
+        public void save(Equipamento equipamento)
         {
             var obj = get(equipamento.Id);
 
@@ -21,7 +21,7 @@ namespace DAL
                 update(equipamento);
         }
 
-        public static void del(Equipamento equipamento, bool onlyAtivo = true)
+        public void del(Equipamento equipamento, bool onlyAtivo = true)
         {
             var obj = get(equipamento.Id);
 

@@ -2,23 +2,30 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Entity
 {
-    public class DbRepository<T> where T : class, new()
+    public abstract class DbRepository<T> where T : class, new()
     {
-        public static void insert(T obj)
+        public Expression<Func<T, T>> select;
+        public Expression<Func<T, bool>> where;
+        public Expression<Func<T, string>> orderBy;
+
+        public void insert(T obj)
         {
             dbContext.get.Add(obj);
             dbContext.get.SaveChanges();
         }
 
-        public static void update(T obj) => dbContext.get.SaveChanges();
+        public void update(T obj) => dbContext.get.SaveChanges();
 
-        public static T get(int id) => dbContext.get.Set<T>().Find(id) ?? new T();
+        public T get(int id) => dbContext.get.Set<T>().Find(id) ?? new T();
 
-        public static List<T> getAll() => dbContext.get.Set<T>().ToList();
+        public List<T> getAll() => dbContext.get.Set<T>().ToList();
 
-        public static void delete(T obj) => dbContext.get.Set<T>().Remove(obj);
+        public void delete(T obj) => dbContext.get.Set<T>().Remove(obj);
+
+        public List<T> list() => dbContext.get.Set<T>().Where(where).OrderBy(orderBy).Select(select).ToList();
     }
 }
