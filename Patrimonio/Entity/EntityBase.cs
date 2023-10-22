@@ -1,18 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Patrimonio.Entity
+namespace Entity
 {
-    public class EntityBase
+    public abstract class EntityBase
     {
-        public int Id { get; set; }
-        public Guid Ide { get; set; }
-        public int Status { get; set; }
-
-        public EntityBase()
-        {
-            Id = 0;
-            Ide = Guid.Empty;
-            Status = 0;
-        }
+        [Column(TypeName = "INT NOT NULL")]
+        public int Id { get; set; } = 0;
+        public Guid Ide { get; set; } = Guid.Empty;
+        public int Status { get; set; } = 0;
     }
 }

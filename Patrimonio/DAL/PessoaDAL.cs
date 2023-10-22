@@ -1,5 +1,4 @@
 ﻿using Entity;
-using Patrimonio.Entity;
 using Patrimonio.Util;
 using System;
 

@@ -28,7 +28,7 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <DockPanel HorizontalAlignment="Left">
-                    <Button Name="btnNovoEmprestimo" Content="Emprestimos" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
+                    <Button Name="btnNovoEmprestimo" Content="Novo empréstimo" Click="btnNovoEmprestimo_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
                     <Button Name="btnEquipamentos" Content="Equipamentos" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
                     <Button Name="btnPessoas" Content="Pessoas" Click="btnPessoas_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
                     <Button Name="btnHistorico" Content="Histórico" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>

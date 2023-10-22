@@ -26,5 +26,6 @@ namespace Entity
 
         public DbSet<Equipamento> Equipamento { get; set; }
         public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<Emprestimo> Emprestimo { get; set; }
     }
 }

@@ -1,19 +1,20 @@
 ﻿using BLL;
 using Entity;
-using Patrimonio.Entity;
+using Patrimonio.ConstantManager;
+using Patrimonio.UI;
 using Patrimonio.Util;
 using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-namespace Patrimonio.UI;
+namespace UI;
 
 public partial class EquipamentoUIView : Window
 {
     public EquipamentoUIView()
     {
         InitializeComponent();
-        refreshDataDrid();
+        refreshDataGrid();
 
         txtBuscar.LostFocus += TxtBuscar_LostFocus;
         txtBuscar.GotFocus += TxtBuscar_GotFocus;
@@ -26,7 +27,7 @@ public partial class EquipamentoUIView : Window
             EquipamentoUICadastro equipamentoUI = new EquipamentoUICadastro();
             equipamentoUI.ShowDialog();
 
-            refreshDataDrid();
+            refreshDataGrid();
         }
         catch (Exception ex)
         {
@@ -41,7 +42,7 @@ public partial class EquipamentoUIView : Window
             EquipamentoUICadastro cadastro = new EquipamentoUICadastro(dataGridEquipamentos.getSelectItem<Equipamento>());
             cadastro.ShowDialog();
 
-            refreshDataDrid();
+            refreshDataGrid();
         }
         catch (Exception ex)
         {
@@ -54,7 +55,7 @@ public partial class EquipamentoUIView : Window
         try
         {
             EquipamentoBLL.delete(dataGridEquipamentos.getSelectItem<Equipamento>());
-            refreshDataDrid();
+            refreshDataGrid();
         }
         catch (Exception ex)
         {
@@ -62,9 +63,10 @@ public partial class EquipamentoUIView : Window
         }
     }
 
-    private void refreshDataDrid()
+    private void refreshDataGrid()
     {
-        dataGridEquipamentos.ItemsSource = EquipamentoBLL.getBySearch(txtBuscar.getString());
+        string txtSearch = txtBuscar.getStringValue().Equals(CommonMessageConstant.EquipamentoViewPlaceHolder) ? string.Empty : txtBuscar.getStringValue();
+        dataGridEquipamentos.ItemsSource = EquipamentoBLL.getBySearch(txtSearch);
         txtBuscar.Focus();
     }
 
@@ -72,7 +74,7 @@ public partial class EquipamentoUIView : Window
     {
         try
         {
-            dataGridEquipamentos.ItemsSource = EquipamentoBLL.getBySearch(txtBuscar.getString());
+            refreshDataGrid();
             bStatus.resetContent();
         }
         catch (Exception ex)
@@ -93,9 +95,9 @@ public partial class EquipamentoUIView : Window
 
     private void TxtBuscar_LostFocus(object sender, RoutedEventArgs e)
     {
-        if (txtBuscar.getString().isEmpty())
+        if (txtBuscar.getStringValue().isEmpty())
         {
-            txtBuscar.Text = "Buscar por id, serial ou nome";
+            txtBuscar.Text = CommonMessageConstant.EquipamentoViewPlaceHolder;
             txtBuscar.Foreground = Brushes.Gray;
         }
     }

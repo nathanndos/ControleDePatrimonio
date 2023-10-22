@@ -24,7 +24,7 @@ public partial class PessoaView : Window
             bStatus.resetContent();
 
             Pessoa pessoa = pessoaObj.Id.isZero() ? new Pessoa() : pessoaObj;
-            pessoa.Nome = txtNome.getString();
+            pessoa.Nome = txtNome.getStringValue();
             PessoaBLL.save(pessoa);
 
             dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(string.Empty);
@@ -44,7 +44,7 @@ public partial class PessoaView : Window
         {
             bStatus.resetContent();
 
-            dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(txtBuscar.getString());
+            dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(txtBuscar.getStringValue());
             txtBuscar.Focus();
         }
         catch (Exception ex)
@@ -60,7 +60,7 @@ public partial class PessoaView : Window
             bStatus.resetContent();
 
             PessoaBLL.delete(dataGridPessoas.getSelectItem<Pessoa>());
-            dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(txtBuscar.getString());
+            dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(txtBuscar.getStringValue());
         }
         catch (Exception ex)
         {

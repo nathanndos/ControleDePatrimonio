@@ -1,5 +1,5 @@
 ﻿using Patrimonio.ConstantManager;
-using Patrimonio.Entity;
+using Entity;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;

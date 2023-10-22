@@ -1,7 +1,6 @@
 ﻿using BLL;
 using Entity;
 using Patrimonio.ConstantManager;
-using Patrimonio.Entity;
 using Patrimonio.Util;
 using System;
 using System.Windows;

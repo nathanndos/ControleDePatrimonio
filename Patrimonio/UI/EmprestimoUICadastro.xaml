@@ -1,0 +1,81 @@
+﻿<Window x:Class="Patrimonio.UI.EmprestimoUICadastro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Patrimonio.UI"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Empréstimo de equipamentos" Height="290" Width="600">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid Margin="10 10 10 3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0 0 0 6" Height="35">
+                <Button x:Name="btnSalvar" Content="Salvar" Width="50"  HorizontalAlignment="Left" Click="btnSalvar_Click"/>
+                <Button x:Name="btnNovo" Click="btnNovo_Click" Content="Novo" Width="50" HorizontalAlignment="Left"/>
+                <Button x:Name="btnFinalizarEmprestimo" Click="btnNovo_Click" Content="Finalizar" Width="50" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <DockPanel>
+                    <Label Content="Pessoa: "/>
+                    <TextBox Margin="0 0 5 0" Width="100">
+                        <TextBox.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="1" x:Name="txtPessoaId"/>
+                                    <Button x:Name="btnBuscarPessoa" Height="20" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarPessoa_Click"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox x:Name="txtPessoaNome" IsEnabled="False"/>
+                </DockPanel>
+                <DockPanel Margin="0 0 0 0">
+                    <Label Content="Equipamento: "/>
+                    <TextBox Margin="0 0 5 0" Width="100">
+                        <TextBox.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="1" x:Name="txtEquipamentoId"/>
+                                    <Button x:Name="btnBuscarEquipamento" Height="20" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarEquipamento_Click"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox x:Name="txtEquipamentoNome"/>
+                </DockPanel>
+                <Grid Margin="0 5 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0">
+                        <Label Content="Abertura: "/>
+                        <DatePicker SelectedDateFormat="Short" Name="txtEmprestimoDataAbertura" VerticalContentAlignment="Center"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="1">
+                        <Label Content="Fechamento: "/>
+                        <DatePicker SelectedDateFormat="Short" Name="txtEmprestimoDataFechamento" VerticalContentAlignment="Center"/>
+                    </DockPanel>
+                </Grid>
+                <StackPanel>
+                    <Label Content="Observação: "/>
+                    <TextBox x:Name="txtEmprestimoObservacao" Height="60" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"/>
+                </StackPanel>
+            </StackPanel>
+            <Label Grid.Row="3" Name="bStatus" />
+        </Grid>
+    </Grid>
+</Window>

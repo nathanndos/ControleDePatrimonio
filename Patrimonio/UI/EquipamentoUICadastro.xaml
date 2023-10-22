@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patrimonio.UI"
-        mc:Ignorable="d" Margin="0" Padding="0"
+        mc:Ignorable="d" Margin="0" Padding="0" 
         Title="Cadastro de equipamentos" Height="200" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Height" Value="22"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="10 10 10 3">
         <Grid.RowDefinitions>

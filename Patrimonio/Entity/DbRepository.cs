@@ -1,5 +1,4 @@
-﻿using Patrimonio.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -8,9 +7,9 @@ namespace Entity
 {
     public abstract class DbRepository<T> where T : class, new()
     {
-        public Expression<Func<T, T>> select;
-        public Expression<Func<T, bool>> where;
-        public Expression<Func<T, string>> orderBy;
+        public Expression<Func<T, T>> select { get; set; }
+        public Expression<Func<T, bool>> where { get; set; }
+        public Expression<Func<T, string>> orderBy { get; set; }
 
         public void insert(T obj)
         {
