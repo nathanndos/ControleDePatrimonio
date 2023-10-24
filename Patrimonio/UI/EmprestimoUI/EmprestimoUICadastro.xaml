@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patrimonio.UI"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Empréstimo de equipamentos" Height="290" Width="600">
+        Title="Empréstimo de equipamentos" Height="290" Width="500">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,42 +27,28 @@
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <DockPanel>
-                    <Label Content="Pessoa: "/>
-                    <TextBox Margin="0 0 5 0" Width="100">
-                        <TextBox.Template>
-                            <ControlTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-                                    <TextBox Grid.Column="1" x:Name="txtPessoaId"/>
-                                    <Button x:Name="btnBuscarPessoa" Height="20" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarPessoa_Click"/>
-                                </Grid>
-                            </ControlTemplate>
-                        </TextBox.Template>
-                    </TextBox>
+                    <Label Content="Pessoa:"/>
+                    <DockPanel HorizontalAlignment="Left" Height="22" Margin="35 0 5 0">
+                        <TextBox Width="70" Name="txtPessoaId"/>
+                        <Button x:Name="btnBuscarPessoa" Width="30" HorizontalAlignment="Left" Content="+" Click="btnBuscarPessoa_Click"/>
+                    </DockPanel>
                     <TextBox x:Name="txtPessoaNome" IsEnabled="False"/>
                 </DockPanel>
                 <DockPanel Margin="0 0 0 0">
-                    <Label Content="Equipamento: "/>
-                    <TextBox Margin="0 0 5 0" Width="100">
-                        <TextBox.Template>
-                            <ControlTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-                                    <TextBox Grid.Column="1" x:Name="txtEquipamentoId"/>
-                                    <Button x:Name="btnBuscarEquipamento" Height="20" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarEquipamento_Click"/>
-                                </Grid>
-                            </ControlTemplate>
-                        </TextBox.Template>
-                    </TextBox>
-                    <TextBox x:Name="txtEquipamentoNome"/>
+                    <Label Content="Equipamento:" Margin="0 0 1 0"/>
+                    <DockPanel HorizontalAlignment="Left" Height="22" Margin="0 0 5 0">
+                        <TextBox Width="70"/>
+                        <Button x:Name="btnBuscarEquipamento" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarEquipamento_Click"/>
+                    </DockPanel>
+                    <TextBox x:Name="txtEquipamentoNome" IsEnabled="False"/>
                 </DockPanel>
                 <Grid Margin="0 5 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <DockPanel Grid.Column="0">
-                        <Label Content="Abertura: "/>
+                    <DockPanel Grid.Column="0" >
+                        <Label Content="Abertura: " />
                         <DatePicker SelectedDateFormat="Short" Name="txtEmprestimoDataAbertura" VerticalContentAlignment="Center"/>
                     </DockPanel>
                     <DockPanel Grid.Column="1">

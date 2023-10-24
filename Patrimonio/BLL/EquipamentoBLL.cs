@@ -41,7 +41,7 @@ namespace BLL
             db.del(equipamento);
         }
 
-        public static List<Equipamento> getBySearch(string textSearch)
+        public static List<Equipamento> listBySearch(string textSearch)
         {
             EquipamentoDAL db = new EquipamentoDAL();
 

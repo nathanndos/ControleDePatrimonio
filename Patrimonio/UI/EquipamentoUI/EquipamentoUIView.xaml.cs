@@ -66,7 +66,7 @@ public partial class EquipamentoUIView : Window
     private void refreshDataGrid()
     {
         string txtSearch = txtBuscar.getStringValue().Equals(CommonMessageConstant.EquipamentoViewPlaceHolder) ? string.Empty : txtBuscar.getStringValue();
-        dataGridEquipamentos.ItemsSource = EquipamentoBLL.getBySearch(txtSearch);
+        dataGridEquipamentos.ItemsSource = EquipamentoBLL.listBySearch(txtSearch);
         txtBuscar.Focus();
     }
 
