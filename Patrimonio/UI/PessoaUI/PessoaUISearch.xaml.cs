@@ -1,6 +1,7 @@
 ﻿using BLL;
 using Entity;
 using Patrimonio.Util;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -8,24 +9,43 @@ namespace Patrimonio.UI.PessoaUI;
 
 public partial class PessoaUISearch : Window
 {
-    public Pessoa pessoa = new Pessoa();
+    public Pessoa pessoaSelected = new Pessoa();
 
     public PessoaUISearch()
     {
         InitializeComponent();
         dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(string.Empty);
+        txtBuscar.Focus();
     }
 
-    private void btnConfirmar_Click(object sender, RoutedEventArgs e)
+    private void callSelect()
     {
-        pessoa = dataGridPessoas.getSelectItem<Pessoa>();
-        DialogResult = true;
+        try
+        {
+            pessoaSelected = dataGridPessoas.getSelectItem<Pessoa>();
+            DialogResult = true;
+        }
+        catch (Exception ex)
+        {
+            bStatus.setExceptionMessage(ex);
+        }
     }
 
-    private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void callBuscar()
     {
-
+        try
+        {
+            dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(txtBuscar.getStringValue());
+        }
+        catch (Exception ex)
+        {
+            bStatus.setExceptionMessage(ex);
+        }
     }
+
+    private void btnConfirmar_Click(object sender, RoutedEventArgs e) => callSelect();
+
+    private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e) => callSelect();
 
     private void btnBuscar_Click(object sender, RoutedEventArgs e) => callBuscar();
 
@@ -33,12 +53,23 @@ public partial class PessoaUISearch : Window
     {
         if (e.Key.Equals(Key.Enter))
             callBuscar();
-        else if (e.Key.Equals(Key.Escape))
+    }
+
+    private void Window_KeyUp(object sender, KeyEventArgs e)
+    {
+        if (e.Key.Equals(Key.Escape) && txtBuscar.IsFocused)
             DialogResult = false;
     }
 
-    private void callBuscar()
+    private void DataGridRow_KeyUp(object sender, KeyEventArgs e)
     {
-        dataGridPessoas.ItemsSource = PessoaBLL.listBySearch(txtBuscar.getStringValue());
+        if (e.Key.Equals(Key.Enter))
+            callSelect();
+    }
+
+    private void DataGridRow_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key.Equals(Key.Enter))
+            e.Handled = true;
     }
 }

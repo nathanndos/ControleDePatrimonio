@@ -37,7 +37,7 @@
                 <DockPanel Margin="0 0 0 0">
                     <Label Content="Equipamento:" Margin="0 0 1 0"/>
                     <DockPanel HorizontalAlignment="Left" Height="22" Margin="0 0 5 0">
-                        <TextBox Width="70"/>
+                        <TextBox Width="70" Name="txtEquipamentoId"/>
                         <Button x:Name="btnBuscarEquipamento" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarEquipamento_Click"/>
                     </DockPanel>
                     <TextBox x:Name="txtEquipamentoNome" IsEnabled="False"/>
@@ -49,7 +49,7 @@
                     </Grid.ColumnDefinitions>
                     <DockPanel Grid.Column="0" >
                         <Label Content="Abertura: " />
-                        <DatePicker SelectedDateFormat="Short" Name="txtEmprestimoDataAbertura" VerticalContentAlignment="Center"/>
+                        <DatePicker SelectedDateFormat="Short" Name="txtEmprestimoDataAbertura" VerticalContentAlignment="Center" IsEnabled="False"/>
                     </DockPanel>
                     <DockPanel Grid.Column="1">
                         <Label Content="Fechamento: "/>

@@ -3,25 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entity
 {
-    public class Equipamento
+    public class Equipamento : EntityBase
     {
-        public int Id { get; set; }
-        public Guid Ide { get; set; }
         public string Nome { get; set; }
         [Column(TypeName = "Date")]
         public DateTime DataAquisicao { get; set; }
 
         [Column(TypeName = "varchar(10)")]
         public string Serial { get; set; }
-        public int Status { get; set; } = 0;
 
         public Equipamento()
         {
-            Ide = Guid.Empty;
             Nome = string.Empty;
-            DataAquisicao = DateTime.Now;
+            DataAquisicao = new DateTime(1900, 1, 1);
             Serial = string.Empty;
-            Status = 0;
         }
     }
 }

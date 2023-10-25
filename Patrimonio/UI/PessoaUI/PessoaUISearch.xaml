@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patrimonio.UI.PessoaUI"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Busca de pessoas" Height="380" Width="300">
+        Title="Busca de pessoas" Height="380" Width="300" KeyUp="Window_KeyUp">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="22"/>
@@ -46,6 +46,8 @@
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                    <EventSetter Event="KeyUp" Handler="DataGridRow_KeyUp"/>
+                    <EventSetter Event="KeyDown" Handler="DataGridRow_KeyDown"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>

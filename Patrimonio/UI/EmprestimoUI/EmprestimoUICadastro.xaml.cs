@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Patrimonio.BLL;
+using Patrimonio.UI.EquipamentoUI;
 using Patrimonio.UI.PessoaUI;
 using Patrimonio.Util;
 using System.Windows;
@@ -7,12 +8,20 @@ namespace Patrimonio.UI;
 
 public partial class EmprestimoUICadastro : Window
 {
-    Pessoa pessoa;
-    Equipamento equipamento;
+    Emprestimo emprestimo { get; set; }
+    Pessoa pessoa = new Pessoa();
+    Equipamento equipamento = new Equipamento();
 
     public EmprestimoUICadastro()
     {
         InitializeComponent();
+    }
+
+    public EmprestimoUICadastro(Emprestimo emprestimo)
+    {
+        InitializeComponent();
+        this.emprestimo = emprestimo;
+        fillForm();
     }
 
     private void btnSalvar_Click(object sender, RoutedEventArgs e)
@@ -39,16 +48,27 @@ public partial class EmprestimoUICadastro : Window
         PessoaUISearch ui = new PessoaUISearch();
         bool? value = ui.ShowDialog();
 
-        if (value ?? false)
-        {
-            pessoa = ui.pessoa;
-            fillPessoa();
-        }
+        if (value.HasValue && value.Value)
+            pessoa = ui.pessoaSelected;
+        
+        fillPessoa();
     }
 
     private void btnBuscarEquipamento_Click(object sender, RoutedEventArgs e)
     {
+        EquipamentoUISearch ui = new EquipamentoUISearch();
+        bool? value = ui.ShowDialog();
 
+        if(value.HasValue && value.Value)
+            equipamento = ui.equipamentoSelected;
+
+        fillEquipamento();
+    }
+
+    private void fillForm()
+    {
+        fillPessoa();
+        fillEquipamento();
     }
 
     private void fillPessoa()
@@ -60,6 +80,6 @@ public partial class EmprestimoUICadastro : Window
     private void fillEquipamento()
     {
         txtEquipamentoNome.Text = equipamento.Nome;
-        txt
+        txtEquipamentoId.Text = equipamento.Id.ToString();
     }
 }

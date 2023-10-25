@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Patrimonio.UI.EquipamentoUI"
-        mc:Ignorable="d" Title="Busca de equipamento" Height="380" Width="300" KeyUp="Window_KeyUp">
+        xmlns:local="clr-namespace:Patrimonio.UI.EquipamentoUI" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" Title="Busca de equipamento" Height="380" Width="320" KeyUp="Window_KeyUp">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="22"/>
@@ -41,10 +41,12 @@
                 </DockPanel>
             </Grid>
         </DockPanel>
-        <DataGrid Grid.Row="1" Name="dataGridPessoas" ItemsSource="{Binding}" Margin="0 0 0 0" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid Grid.Row="1" Name="dataGridEquipamentos" ItemsSource="{Binding}" Margin="0 0 0 0" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                    <EventSetter Event="KeyUp" Handler="DataGridRow_KeyUp"/>
+                    <EventSetter Event="KeyDown" Handler="DataGridRow_KeyDown"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>

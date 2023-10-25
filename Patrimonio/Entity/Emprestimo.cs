@@ -1,11 +1,17 @@
 ﻿using Entity.Enum;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Entity;
 
 public class Emprestimo : EntityBase
 {
-    public Pessoa Pessoa { get; set; }
-    public Equipamento Equipamento { get; set; }
+    [ForeignKey("Pessoa")] 
+    public int PessoaId { get; set; }
+    public virtual Pessoa Pessoa { get; set; }
+    [ForeignKey("Equipamento")] 
+    public int EquipamentoId { get; set; }
+    public virtual Equipamento Equipamento { get; set; }
     public SituacaoEmprestimoEnumerator Situacao { get; set; }
     public DateTime DataAbertura { get; set; }
     public DateTime DataFechamento { get;set; }
@@ -13,10 +19,6 @@ public class Emprestimo : EntityBase
 
     public Emprestimo()
     {
-        Id = 0;
-        Ide = Guid.Empty;
-        Pessoa = new Pessoa();
-        Equipamento = new Equipamento();
         Situacao = SituacaoEmprestimoEnumerator.None;
         DataAbertura =
             DataFechamento = new DateTime(1900, 1 ,1);
