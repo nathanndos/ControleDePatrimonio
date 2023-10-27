@@ -36,8 +36,7 @@
                 </DockPanel>
             </Grid>
         </DockPanel>
-        <StackPanel Grid.Row="1" Margin="5">
-            <DataGrid Name="dataGridEmprestimos" Margin="0 0 0 0" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid  Grid.Row="1" Name="dataGridEmprestimos" Margin="0 0 0 0" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridRow">
                         <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
@@ -45,12 +44,12 @@
                 </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ide" Binding="{Binding Ide}" Width="auto" Visibility="Collapsed"/>
-                    <DataGridTextColumn Header="Id" Binding ="{Binding Id}" Width="*"/>
+                    <DataGridTextColumn Header="Id" Binding ="{Binding Id}" Width="60"/>
+                <DataGridTextColumn Header="Data empréstimo" Binding ="{Binding DataAbertura, StringFormat={}{0:dd/MM/yyyy}}" Width="120"/>
                     <DataGridTextColumn Header="Nome" Binding ="{Binding Pessoa.Nome}" Width="*"/>
                     <DataGridTextColumn Header="Equipamento" Binding ="{Binding Equipamento.Nome}" Width="*"/>
                     <DataGridTextColumn Header="Serial" Binding ="{Binding Equipamento.Serial}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
     </Grid>
 </Window>

@@ -17,7 +17,10 @@ namespace Entity
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer("Data Source=localhost\\SQL2019;Initial Catalog=ControleDePadrimonio;User ID=sa;Password=senha;TrustServerCertificate=True");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+            => optionsBuilder
+                .UseSqlServer("Data Source=localhost\\SQL2019;Initial Catalog=ControleDePadrimonio;User ID=sa;Password=senha;TrustServerCertificate=True")
+                .UseLazyLoadingProxies();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entity
@@ -11,6 +12,7 @@ namespace Entity
 
         [Column(TypeName = "varchar(10)")]
         public string Serial { get; set; }
+        public virtual List<Emprestimo> Emprestimos { get; set; } =  new List<Emprestimo>();    
 
         public Equipamento()
         {

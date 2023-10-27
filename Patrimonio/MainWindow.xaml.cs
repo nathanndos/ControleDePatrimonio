@@ -13,8 +13,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var teste = dbContext.get.Emprestimo.ToList();
-        var teste2 = teste.FirstOrDefault();
         dataGridEmprestimos.ItemsSource = EmprestimoBLL.listBySearch(string.Empty);
     }
 
