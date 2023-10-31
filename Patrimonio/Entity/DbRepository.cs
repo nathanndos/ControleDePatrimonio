@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Entity
 {
-    public abstract class DbRepository<T> where T : class, new()
+    public abstract class DbRepository<T> where T : EntityBase, new()
     {
         public Expression<Func<T, T>> select { get; set; }
         public Expression<Func<T, bool>> where { get; set; }
@@ -20,6 +20,8 @@ namespace Entity
         public void update(T obj) => dbContext.get.SaveChanges();
 
         public T get(int id) => dbContext.get.Set<T>().Find(id) ?? new T();
+
+        public T get(Guid ide) => dbContext.get.Set<T>().Find(.Equals(ide)) ?? new T();
 
         public List<T> getAll() => dbContext.get.Set<T>().ToList();
 

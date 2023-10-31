@@ -18,14 +18,15 @@ namespace Patrimonio.BLL
             else if(emprestimo.Equipamento.Id.isZero())
                 throw new Exception(EmprestimoExceptionConstant.EquipamentoNaoInformado);
         }
-        public static void save(Emprestimo emprestimo)
+
+        public static Emprestimo save(Emprestimo emprestimo)
         {
             isValid(emprestimo);
             EmprestimoDAL db = new EmprestimoDAL();
 
             emprestimo.DataAbertura = DateTime.Now;
 
-            db.save(emprestimo);
+            return db.save(emprestimo);
         }
 
         public static Emprestimo get(int id)

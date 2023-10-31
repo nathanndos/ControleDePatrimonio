@@ -6,7 +6,7 @@ namespace Patrimonio.DAL
 {
     public class EmprestimoDAL : DbRepository<Emprestimo>
     {
-        public void save(Emprestimo emprestimo)
+        public Emprestimo save(Emprestimo emprestimo)
         {
             var obj = get(emprestimo.Id);
 
@@ -19,6 +19,8 @@ namespace Patrimonio.DAL
             }
             else
                 update(emprestimo);
+
+            return get(obj.Ide);
         }
 
         public void del(Emprestimo emprestimo, bool onlyAtivo = true)

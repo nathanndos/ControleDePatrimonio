@@ -30,7 +30,8 @@ public partial class EmprestimoUICadastro : Window
         emprestimo.Pessoa = pessoa;
         emprestimo.Equipamento = equipamento;
 
-        EmprestimoBLL.save(emprestimo);
+        emprestimo = EmprestimoBLL.save(emprestimo);
+        fillForm();
     }
 
     private void btnNovo_Click(object sender, RoutedEventArgs e)
