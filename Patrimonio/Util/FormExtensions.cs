@@ -29,5 +29,6 @@ namespace Patrimonio.Util
 
         public static void setExceptionMessage(this Label value, Exception ex) => value.Content = ex.Message;
         public static void resetContent(this Label value) => value.Content = string.Empty;
+        public static void setMessage(this Label value, string text) => value.Content = text;
     }
 }

@@ -21,7 +21,7 @@ namespace Entity
 
         public T get(int id) => dbContext.get.Set<T>().Find(id) ?? new T();
 
-        public T get(Guid ide) => dbContext.get.Set<T>().Find(.Equals(ide)) ?? new T();
+        public T get(Guid ide) => dbContext.get.Set<T>().FirstOrDefault(i => i.Ide.Equals(ide)) ?? new T();
 
         public List<T> getAll() => dbContext.get.Set<T>().ToList();
 

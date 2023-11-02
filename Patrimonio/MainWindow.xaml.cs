@@ -1,6 +1,7 @@
 ﻿using Entity;
 using Patrimonio.BLL;
 using Patrimonio.UI;
+using Patrimonio.Util;
 using System.Linq;
 using System.Windows;
 using UI;
@@ -24,7 +25,7 @@ public partial class MainWindow : Window
 
     private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
-        EmprestimoUICadastro emprestimoUICadastro = new EmprestimoUICadastro();
+        EmprestimoUICadastro emprestimoUICadastro = new EmprestimoUICadastro(dataGridEmprestimos.getSelectItem<Emprestimo>());
         emprestimoUICadastro.Show();
     }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patrimonio.UI"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Empréstimo de equipamentos" Height="290" Width="500">
+        Title="Empréstimo de equipamentos" Height="330" Width="500" Padding="0" Margin="0">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,14 +23,20 @@
             <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0 0 0 6" Height="35">
                 <Button x:Name="btnSalvar" Content="Salvar" Width="50"  HorizontalAlignment="Left" Click="btnSalvar_Click"/>
                 <Button x:Name="btnNovo" Click="btnNovo_Click" Content="Novo" Width="50" HorizontalAlignment="Left"/>
-                <Button x:Name="btnFinalizarEmprestimo" Click="btnNovo_Click" Content="Finalizar" Width="50" HorizontalAlignment="Left"/>
+                <Button x:Name="btnFinalizarEmprestimo" Click="btnFinalizarEmprestimo_Click" Content="Finalizar" Width="50" HorizontalAlignment="Left"/>
             </StackPanel>
             <StackPanel Grid.Row="1">
+                <DockPanel>
+                    <Label Content="Id:"/>
+                    <TextBox x:Name="txtEmprestimoId" IsReadOnly="True" Width="100" Margin="60 0 0 0"/>
+                    <Label Content="Ide:"/>
+                    <TextBox Name="txtEmprestimoIde" IsReadOnly="True"/>
+                </DockPanel>
                 <DockPanel>
                     <Label Content="Pessoa:"/>
                     <DockPanel HorizontalAlignment="Left" Height="22" Margin="35 0 5 0">
                         <TextBox Width="70" Name="txtPessoaId"/>
-                        <Button x:Name="btnBuscarPessoa" Width="30" HorizontalAlignment="Left" Content="+" Click="btnBuscarPessoa_Click"/>
+                        <Button x:Name="btnBuscarPessoa" Width="30" HorizontalAlignment="Left" Content="+" Click="btnBuscarPessoa_Click" LostFocus="btnBuscarPessoa_LostFocus"/>
                     </DockPanel>
                     <TextBox x:Name="txtPessoaNome" IsEnabled="False"/>
                 </DockPanel>
@@ -38,7 +44,7 @@
                     <Label Content="Equipamento:" Margin="0 0 1 0"/>
                     <DockPanel HorizontalAlignment="Left" Height="22" Margin="0 0 5 0">
                         <TextBox Width="70" Name="txtEquipamentoId"/>
-                        <Button x:Name="btnBuscarEquipamento" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarEquipamento_Click"/>
+                        <Button x:Name="btnBuscarEquipamento" Width="30" HorizontalAlignment="Right" Content="+" Click="btnBuscarEquipamento_Click" LostFocus="btnBuscarEquipamento_LostFocus"/>
                     </DockPanel>
                     <TextBox x:Name="txtEquipamentoNome" IsEnabled="False"/>
                 </DockPanel>
@@ -53,7 +59,7 @@
                     </DockPanel>
                     <DockPanel Grid.Column="1">
                         <Label Content="Fechamento: "/>
-                        <DatePicker SelectedDateFormat="Short" Name="txtEmprestimoDataFechamento" VerticalContentAlignment="Center"/>
+                        <DatePicker SelectedDateFormat="Short" Name="txtEmprestimoDataFechamento" VerticalContentAlignment="Center" IsEnabled="False"/>
                     </DockPanel>
                 </Grid>
                 <StackPanel>
@@ -61,7 +67,7 @@
                     <TextBox x:Name="txtEmprestimoObservacao" Height="60" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"/>
                 </StackPanel>
             </StackPanel>
-            <Label Grid.Row="3" Name="bStatus" />
+            <Label Grid.Row="3" Name="bStatus"/>
         </Grid>
     </Grid>
 </Window>

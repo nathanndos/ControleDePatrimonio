@@ -23,5 +23,7 @@ public class Emprestimo : EntityBase
         DataAbertura =
             DataFechamento = new DateTime(1900, 1 ,1);
         Observacao = string.Empty;
+        Pessoa = new Pessoa();
+        Equipamento = new Equipamento();
     }
 }

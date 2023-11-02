@@ -13,9 +13,9 @@ namespace Patrimonio.BLL
     {
         public static void isValid(Emprestimo emprestimo)
         {
-            if (emprestimo.Pessoa.Id.isZero())
+            if (emprestimo.PessoaId.isZero())
                 throw new Exception(EmprestimoExceptionConstant.PessoaNaoInformada);
-            else if(emprestimo.Equipamento.Id.isZero())
+            else if(emprestimo.EquipamentoId.isZero())
                 throw new Exception(EmprestimoExceptionConstant.EquipamentoNaoInformado);
         }
 
@@ -23,7 +23,6 @@ namespace Patrimonio.BLL
         {
             isValid(emprestimo);
             EmprestimoDAL db = new EmprestimoDAL();
-
             emprestimo.DataAbertura = DateTime.Now;
 
             return db.save(emprestimo);
@@ -47,6 +46,19 @@ namespace Patrimonio.BLL
             //    db.where = db.where.and(emprestimo => emprestimo.Nome.Contains(textSearch));
             var teste = db.list();
             return db.list();
+        }
+
+        public static void finalizar(Emprestimo emprestimo)
+        {
+            isValidFinalizar(emprestimo);
+        }
+
+        private static void isValidFinalizar(Emprestimo emprestimo)
+        {
+            if (emprestimo.DataFechamento.isNotDefaultDateTime())
+                throw new Exception();
+            else if (emprestimo.Ide.isEmpty())
+                throw new Exception(EmprestimoExceptionConstant.EmprestimoJaFinalizado);
         }
     }
 }
