@@ -40,4 +40,6 @@ public partial class MainWindow : Window
         EmprestimoUICadastro emprestimoUICadastro = new EmprestimoUICadastro();
         emprestimoUICadastro.Show();
     }
+
+    private void btnAtualizar_Click(object sender, RoutedEventArgs e) => dataGridEmprestimos.ItemsSource = EmprestimoBLL.listBySearch(string.Empty);
 }

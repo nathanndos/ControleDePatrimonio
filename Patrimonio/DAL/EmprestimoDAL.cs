@@ -8,9 +8,7 @@ namespace Patrimonio.DAL
     {
         public Emprestimo save(Emprestimo emprestimo)
         {
-            var obj = get(emprestimo.Id);
-
-            if (obj?.Ide.isEmpty() ?? true)
+            if (emprestimo.Ide.isEmpty())
             {
                 if (emprestimo.Ide.isEmpty())
                     emprestimo.Ide = Guid.NewGuid();
@@ -20,7 +18,7 @@ namespace Patrimonio.DAL
             else
                 update(emprestimo);
 
-            return get(obj.Ide);
+            return get(emprestimo.Ide);
         }
 
         public void del(Emprestimo emprestimo, bool onlyAtivo = true)

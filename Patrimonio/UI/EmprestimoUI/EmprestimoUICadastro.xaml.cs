@@ -2,6 +2,7 @@
 using Entity;
 using Patrimonio.BLL;
 using Patrimonio.ConstantManager;
+using Patrimonio.ConstantManager.Message;
 using Patrimonio.UI.EquipamentoUI;
 using Patrimonio.UI.PessoaUI;
 using Patrimonio.Util;
@@ -111,6 +112,15 @@ public partial class EmprestimoUICadastro : Window
         txtEquipamentoNome.Text = emprestimo.Equipamento.Nome;
         txtEquipamentoId.Text = emprestimo.Equipamento.Id.emptyIfZero();
         txtEmprestimoObservacao.Text = emprestimo.Observacao;
+
+        if (emprestimo.isFinalizado)
+        {
+            btnBuscarPessoa.IsEnabled = 
+                btnBuscarEquipamento.IsEnabled =
+                txtPessoaId.IsEnabled =
+                txtEquipamentoId.IsEnabled = false;
+            txtEmprestimoObservacao.IsReadOnly = true;
+        }
     }
 
     private void fillPessoa()
@@ -150,6 +160,8 @@ public partial class EmprestimoUICadastro : Window
         try
         {
             EmprestimoBLL.finalizar(emprestimo);
+            fillForm();
+            bStatus.setMessage(EmprestimoMessageConstant.EmprestimoFinalizadoComSucesso);
         }
         catch (Exception ex)
         {
