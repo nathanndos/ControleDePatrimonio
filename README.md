@@ -18,7 +18,7 @@ Ao clicar em Novo, Editar ou dar duplo click em um registro, será aberta uma ja
 
 ## Pessoas
 
-Clicando em Pessoas, será aberta uma janela simples de cadastro e pesquisa de pessoas
+Clicando em Pessoas, será aberta uma janela simples de cadastro e pesquisa de pessoas.
 ![z4](https://github.com/nathanndos/ControleDePatrimonio/assets/77414867/f032f6cc-bdc7-40e4-95e5-dca60449ddee)
 
 ## Empréstimos
