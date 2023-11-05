@@ -34,10 +34,13 @@ public class PessoaBLL
         return db.get(id);
     }
 
-    public static void delete(Pessoa Pessoa)
+    public static void delete(Pessoa pessoa)
     {
+        if (pessoa.Emprestimos.Any())
+            throw new Exception(PessoaExceptionConstant.PessoaComMovimentacaoDeEmprestimo);
+
         PessoaDAL db = new PessoaDAL();
-        db.del(Pessoa);
+        db.del(pessoa);
     }
 
     public static List<Pessoa> listBySearch(string textSearch)

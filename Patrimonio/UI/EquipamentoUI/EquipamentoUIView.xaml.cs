@@ -24,6 +24,7 @@ public partial class EquipamentoUIView : Window
     {
         try
         {
+            bStatus.resetContent();
             EquipamentoUICadastro equipamentoUI = new EquipamentoUICadastro();
             equipamentoUI.ShowDialog();
 
@@ -39,6 +40,7 @@ public partial class EquipamentoUIView : Window
     {
         try
         {
+            bStatus.resetContent();
             EquipamentoUICadastro cadastro = new EquipamentoUICadastro(dataGridEquipamentos.getSelectItem<Equipamento>());
             cadastro.ShowDialog();
 
@@ -54,6 +56,7 @@ public partial class EquipamentoUIView : Window
     {
         try
         {
+            bStatus.resetContent();
             EquipamentoBLL.delete(dataGridEquipamentos.getSelectItem<Equipamento>());
             refreshDataGrid();
         }
@@ -74,6 +77,7 @@ public partial class EquipamentoUIView : Window
     {
         try
         {
+            bStatus.resetContent();
             refreshDataGrid();
             bStatus.resetContent();
         }

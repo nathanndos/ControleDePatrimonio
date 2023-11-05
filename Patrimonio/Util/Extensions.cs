@@ -13,6 +13,7 @@ namespace Patrimonio.Util
         public static bool isNotApagado(this int value) => !value.isApagado();
         public static string getStringValue(this TextBox value) => value.Text?.Trim() ?? string.Empty;
         public static bool isZero(this int value) => value.Equals(0);
+        public static bool isNotZero(this int value) => !value.isZero();
         public static bool isDefaultDateTime(this DateTime value) => value.Equals(new DateTime(1900, 1, 1));
         public static bool isNotDefaultDateTime(this DateTime value) => !value.isDefaultDateTime();
         public static string emptyIfDefaultDateTime(this DateTime value) => value.isDefaultDateTime() ? string.Empty : value.ToString();

@@ -18,9 +18,7 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <Grid>
@@ -32,15 +30,14 @@
                     <Button Name="btnNovoEmprestimo" Content="Novo empréstimo" Click="btnNovoEmprestimo_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
                     <Button Name="btnEquipamentos" Content="Equipamentos" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
                     <Button Name="btnPessoas" Content="Pessoas" Click="btnPessoas_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
-                    <Button Name="btnHistorico" Content="Histórico" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
-                    <Button Name="btnListaDeDejos" Content="Lista de desejos" Click="btnEquipamentos_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
+                    <Button Name="btnHistorico" Content="Histórico" Click="btnHistorico_Click" Style="{DynamicResource ResourceKey=btnHeader}"/>
                 </DockPanel>
                 <DockPanel Grid.Row="1">
                     <Button Name="btnAtualizar" Content="Atualizar" Click="btnAtualizar_Click" Style="{DynamicResource ResourceKey=btnHeader}" HorizontalAlignment="Right" Width="70" Height="25"/>
                 </DockPanel>
             </Grid>
         </DockPanel>
-        <DataGrid  Grid.Row="1" Name="dataGridEmprestimos" Margin="0 0 0 0" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid  Grid.Row="1" Name="dataGridEmprestimos" Margin="0 0 0 10" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>

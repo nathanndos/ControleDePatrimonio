@@ -1,6 +1,7 @@
 ﻿using ConstantManager.Exception;
 using DAL;
 using Entity;
+using Patrimonio.ConstantManager.Exception;
 using Patrimonio.Util;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,8 @@ namespace BLL
 
         public static void delete(Equipamento equipamento)
         {
+            if (equipamento.Emprestimos.Any())
+                throw new Exception(EmprestimoExceptionConstant.DeletarEquipamentoComEmprestimo);
             EquipamentoDAL db = new EquipamentoDAL();
             db.del(equipamento);
         }
@@ -48,9 +51,9 @@ namespace BLL
             db.select = equipamento => equipamento;
 
             db.where = equipamento =>
-                       equipamento.Serial.Contains(textSearch) ||
+                       (equipamento.Serial.Contains(textSearch) ||
                        equipamento.Nome.Contains(textSearch) ||
-                       equipamento.Id.ToString().Contains(textSearch) &&
+                       equipamento.Id.ToString().Contains(textSearch)) &&
                        equipamento.Status.Equals(0);
 
             db.orderBy = equipamento => equipamento.Nome;

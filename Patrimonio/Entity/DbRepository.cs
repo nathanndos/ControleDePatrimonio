@@ -10,6 +10,7 @@ namespace Entity
         public Expression<Func<T, T>> select { get; set; }
         public Expression<Func<T, bool>> where { get; set; }
         public Expression<Func<T, string>> orderBy { get; set; }
+        public Expression<Func<T, bool>> exist { get; set; }
 
         public void insert(T obj)
         {
@@ -28,5 +29,8 @@ namespace Entity
         public void delete(T obj) => dbContext.get.Set<T>().Remove(obj);
 
         public List<T> list() => dbContext.get.Set<T>().Where(where).OrderBy(orderBy).Select(select).ToList();
+
+        public bool exists() => dbContext.get.Set<T>().Any(exist);
+        public bool notExists() => !exists();
     }
 }

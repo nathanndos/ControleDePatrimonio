@@ -47,7 +47,7 @@ public partial class EmprestimoUICadastro : Window
         }
     }
 
-    private void clearForm()
+    private void callNovo()
     {
         try
         {
@@ -56,7 +56,7 @@ public partial class EmprestimoUICadastro : Window
             emprestimo = new Emprestimo();
             pessoa = new Pessoa();
             equipamento = new Equipamento();
-            fillForm();
+            clearForm();
         }
         catch (Exception ex)
         {
@@ -122,6 +122,24 @@ public partial class EmprestimoUICadastro : Window
             txtEmprestimoObservacao.IsReadOnly = true;
         }
     }
+    
+    private void clearForm()
+    {
+        txtEmprestimoId.Text =
+        txtEmprestimoIde.Text =
+        txtEmprestimoDataAbertura.Text =
+        txtEmprestimoDataFechamento.Text =
+        txtPessoaId.Text =
+        txtPessoaNome.Text =
+        txtEquipamentoNome.Text =
+        txtEquipamentoId.Text =
+        txtEmprestimoObservacao.Text = string.Empty;
+        btnBuscarPessoa.IsEnabled =
+            btnBuscarEquipamento.IsEnabled =
+            txtPessoaId.IsEnabled =
+            txtEquipamentoId.IsEnabled = 
+            txtEmprestimoObservacao.IsReadOnly = false;
+    }
 
     private void fillPessoa()
     {
@@ -137,7 +155,7 @@ public partial class EmprestimoUICadastro : Window
 
     private void btnSalvar_Click(object sender, RoutedEventArgs e) => save();
 
-    private void btnNovo_Click(object sender, RoutedEventArgs e) => clearForm();
+    private void btnNovo_Click(object sender, RoutedEventArgs e) => callNovo();
 
     private void btnBuscarPessoa_Click(object sender, RoutedEventArgs e) => callBuscaPessoa();
 

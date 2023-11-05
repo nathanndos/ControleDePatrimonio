@@ -1,8 +1,8 @@
 ﻿using Entity;
 using Patrimonio.BLL;
 using Patrimonio.UI;
+using Patrimonio.UI.HistoricoUI;
 using Patrimonio.Util;
-using System.Linq;
 using System.Windows;
 using UI;
 using UI.PessoaUI;
@@ -14,7 +14,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        dataGridEmprestimos.ItemsSource = EmprestimoBLL.listBySearch(string.Empty);
+        dataGridEmprestimos.ItemsSource = EmprestimoBLL.list();
     }
 
     private void btnEquipamentos_Click(object sender, RoutedEventArgs e)
@@ -41,5 +41,11 @@ public partial class MainWindow : Window
         emprestimoUICadastro.Show();
     }
 
-    private void btnAtualizar_Click(object sender, RoutedEventArgs e) => dataGridEmprestimos.ItemsSource = EmprestimoBLL.listBySearch(string.Empty);
+    private void btnAtualizar_Click(object sender, RoutedEventArgs e) => dataGridEmprestimos.ItemsSource = EmprestimoBLL.list();
+
+    private void btnHistorico_Click(object sender, RoutedEventArgs e)
+    {
+        HistoricoUISearch historicoUISearch = new HistoricoUISearch();
+        historicoUISearch.Show();
+    }
 }

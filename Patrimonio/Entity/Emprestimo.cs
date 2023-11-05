@@ -27,4 +27,5 @@ public class Emprestimo : EntityBase
     }
 
     public bool isFinalizado => DataFechamento.isNotDefaultDateTime();
+    public bool isNotFinalizado => DataFechamento.isDefaultDateTime();
 }
