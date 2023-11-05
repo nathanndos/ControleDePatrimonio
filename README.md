@@ -42,7 +42,7 @@ Na janela de Empréstimos, é aonde serão criadas as movimentações dos equipa
 ## Histórico
 Em histórico, serão exibidas todas as movimentações de empréstimos realizadas até o momento. Existem os filtros de pessoa e equipamento que podem ou não ser preenchidos. Além disso, são exibidas duas grid, aonde a primeira são os empréstimos ativos no momento e abaixo dele são exibidos as movimentações antigas que já foram finalizadas anteriormente 
 
-![z6](https://github.com/nathanndos/ControleDePatrimonio/assets/77414867/0dfcf68b-040c-4c61-890b-b91332390188)
+![z7](https://github.com/nathanndos/ControleDePatrimonio/assets/77414867/8e4b8f3d-e433-49e0-983d-cb1236243a55)
 - Ao clicar no + no campo de pessoa ou equipamento, serão exibidas listas dos registros cadastrados
 - Duplo clique em algum registro, abrirá o cadastro de empréstimo
 
